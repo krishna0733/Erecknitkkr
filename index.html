@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ERECK - Electrical Engineering Society, NIT Kurukshetra. Upcoming events and registration.">
+  <title>ERECK | Electrical Society</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ticker -->
+  <div class="ticker" aria-label="Announcement">
+    <div class="ticker-track">
+      <span>● LIVE &nbsp; Event registrations are open ◇ Oct – Nov 2026 ◇ ERECK · Electrical Department ◇</span>
+      <span>● LIVE &nbsp; Event registrations are open ◇ Oct – Nov 2026 ◇ ERECK · Electrical Department ◇</span>
+      <span>● LIVE &nbsp; Event registrations are open ◇ Oct – Nov 2026 ◇ ERECK · Electrical Department ◇</span>
+    </div>
+  </div>
+
+  <!-- Sticky navigation -->
+  <header class="navbar">
+    <a href="#home" class="logo">ER<span>ECK</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#events">Events</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <p class="eyebrow">ELECTRICAL ENGINEERING SOCIETY · NIT KURUKSHETRA</p>
+      <h1>We are <span class="accent">ERECK</span></h1>
+      <p class="hero-text">A student community of the Electrical Department that turns circuits, code and curiosity into real projects and events.</p>
+      <div class="hero-btns">
+        <a href="#events" class="btn btn-primary">Explore events ↓</a>
+        <a href="#about" class="btn btn-ghost">About us →</a>
+      </div>
+      <div class="stats">
+        <div><strong>3</strong><span>Upcoming events</span></div>
+        <div><strong>EE</strong><span>Department</span></div>
+        <div><strong>100%</strong><span>Student-run</span></div>
+      </div>
+    </section>
+
+    <!-- Events -->
+    <section class="section" id="events">
+      <p class="eyebrow">// 01 UPCOMING EVENTS</p>
+      <h2>Join the next <span class="accent">spark</span>.</h2>
+
+      <div class="filters" role="group" aria-label="Filter events">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="technical">Technical</button>
+        <button class="filter-btn" data-filter="cultural">Cultural</button>
+        <button class="filter-btn" data-filter="sports">Sports</button>
+      </div>
+
+      <div class="events-grid" id="eventsGrid">
+        <article class="card" data-category="technical">
+          <div class="card-img">
+            <img src="images/event1.svg" alt="Circuit design challenge poster">
+            <span class="badge technical">Technical</span>
+          </div>
+          <div class="card-body">
+            <h3>Circuit Design Challenge</h3>
+            <p class="meta">📅 25 Oct 2026 &nbsp;·&nbsp; ⏰ 10:00 AM</p>
+            <p class="desc">Design, simulate and build a working circuit in 3 hours.</p>
+            <button class="btn btn-primary register-btn" data-event="Circuit Design Challenge">Register</button>
+          </div>
+        </article>
+
+        <article class="card" data-category="cultural">
+          <div class="card-img">
+            <img src="images/event2.svg" alt="Cultural night poster">
+            <span class="badge cultural">Cultural</span>
+          </div>
+          <div class="card-body">
+            <h3>Voltage Night</h3>
+            <p class="meta">📅 08 Nov 2026 &nbsp;·&nbsp; ⏰ 06:00 PM</p>
+            <p class="desc">Music, dance and stand-up by the students of the department.</p>
+            <button class="btn btn-primary register-btn" data-event="Voltage Night">Register</button>
+          </div>
+        </article>
+
+        <article class="card" data-category="sports">
+          <div class="card-img">
+            <img src="images/event3.svg" alt="Cricket tournament poster">
+            <span class="badge sports">Sports</span>
+          </div>
+          <div class="card-body">
+            <h3>Volt Cup Cricket</h3>
+            <p class="meta">📅 15 Nov 2026 &nbsp;·&nbsp; ⏰ 08:00 AM</p>
+            <p class="desc">Inter-year cricket tournament. Make a team of 8 and play.</p>
+            <button class="btn btn-primary register-btn" data-event="Volt Cup Cricket">Register</button>
+          </div>
+        </article>
+      </div>
+      <p class="empty" id="emptyMsg" hidden>Is category me abhi koi event nahi hai.</p>
+    </section>
+
+    <!-- About -->
+    <section class="section about" id="about">
+      <p class="eyebrow">// 02 WHO WE ARE</p>
+      <h2>Engineering isn't just learned — it's <span class="accent">lived</span>.</h2>
+      <p>ERECK is the society of the Electrical Engineering Department. We organise workshops, competitions and cultural events so that students learn beyond the classroom.</p>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div>
+      <h3>ER<span class="accent">ECK</span></h3>
+      <p>Electrical Engineering Society, NIT Kurukshetra</p>
+    </div>
+    <p>© 2026 ERECK. All rights reserved.</p>
+  </footer>
+
+  <!-- Registration modal -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <button class="close-btn" id="closeBtn" aria-label="Close">✕</button>
+      <h2 id="modalTitle">Event Registration</h2>
+
+      <form id="regForm" novalidate>
+        <label for="eventName">Event</label>
+        <input type="text" id="eventName" name="event" readonly>
+
+        <label for="fullName">Full name</label>
+        <input type="text" id="fullName" name="name" placeholder="Your name" required>
+        <small class="error" id="nameErr"></small>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        <small class="error" id="emailErr"></small>
+
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" placeholder="10-digit number" required>
+        <small class="error" id="phoneErr"></small>
+
+        <label for="year">Year</label>
+        <select id="year" name="year" required>
+          <option value="">Select year</option>
+          <option>1st Year</option>
+          <option>2nd Year</option>
+          <option>3rd Year</option>
+          <option>4th Year</option>
+        </select>
+        <small class="error" id="yearErr"></small>
+
+        <button type="submit" class="btn btn-primary full">Submit registration</button>
+      </form>
+
+      <div class="success" id="success" hidden>
+        <div class="tick">✓</div>
+        <h3>Registration successful!</h3>
+        <p id="successMsg"></p>
+        <button class="btn btn-ghost" id="doneBtn">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
