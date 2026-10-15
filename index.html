@@ -3,165 +3,402 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="ERECK - Electrical Engineering Society, NIT Kurukshetra. Upcoming events and registration.">
-  <title>ERECK | Electrical Society</title>
+  <meta name="description" content="ElectroReck is the electrical and electronics engineering student community at NIT Kurukshetra. Workshops, competitions, projects and inter-college meets.">
+  <title>ElectroReck | Electrical &amp; Electronics Community, NIT Kurukshetra</title>
+  <link rel="icon" href="images/logo.jpg" type="image/jpeg">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <canvas id="circuit" aria-hidden="true"></canvas>
 
-  <!-- Ticker -->
+  <!-- ===== Ticker ===== -->
   <div class="ticker" aria-label="Announcement">
     <div class="ticker-track">
-      <span>● LIVE &nbsp; Event registrations are open ◇ Oct – Nov 2026 ◇ ERECK · Electrical Department ◇</span>
-      <span>● LIVE &nbsp; Event registrations are open ◇ Oct – Nov 2026 ◇ ERECK · Electrical Department ◇</span>
-      <span>● LIVE &nbsp; Event registrations are open ◇ Oct – Nov 2026 ◇ ERECK · Electrical Department ◇</span>
+      <span>⚡ ELECTROCRAFT WORKSHOP · 17–20 OCT · VENUE E101 · REGISTRATIONS OPEN ◇ ELECTRICA &amp; DIGISPARK AT TECHSPARDHA ◇</span>
+      <span>⚡ ELECTROCRAFT WORKSHOP · 17–20 OCT · VENUE E101 · REGISTRATIONS OPEN ◇ ELECTRICA &amp; DIGISPARK AT TECHSPARDHA ◇</span>
+      <span>⚡ ELECTROCRAFT WORKSHOP · 17–20 OCT · VENUE E101 · REGISTRATIONS OPEN ◇ ELECTRICA &amp; DIGISPARK AT TECHSPARDHA ◇</span>
     </div>
   </div>
 
-  <!-- Sticky navigation -->
+  <!-- ===== Sticky navbar ===== -->
   <header class="navbar">
-    <a href="#home" class="logo">ER<span>ECK</span></a>
+    <a href="#home" class="brand">
+      <img src="images/logo.jpg" alt="ElectroReck logo" class="brand-logo" onerror="this.onerror=null;this.src='images/logo.svg'">
+      <span>ELECTRO<b>RECK</b></span>
+    </a>
     <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>
     <nav id="navLinks">
       <a href="#home">Home</a>
       <a href="#events">Events</a>
+      <a href="#workshops">Workshops</a>
+      <a href="#competitions">Competitions</a>
+      <a href="#meets">Meets</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
+      <a href="#register" class="nav-register">Register</a>
+      <button class="btn btn-ghost small" id="loginBtn">Login</button>
     </nav>
   </header>
 
   <main>
-    <!-- Hero -->
+    <!-- ===== Hero ===== -->
     <section class="hero" id="home">
-      <p class="eyebrow">ELECTRICAL ENGINEERING SOCIETY · NIT KURUKSHETRA</p>
-      <h1>We are <span class="accent">ERECK</span></h1>
-      <p class="hero-text">A student community of the Electrical Department that turns circuits, code and curiosity into real projects and events.</p>
+      <p class="eyebrow">NIT KURUKSHETRA · ELECTRICAL &amp; ELECTRONICS</p>
+      <h1><span>Innovate.</span> <span>Create.</span> <span>Experiment.</span> <span>Collaborate.</span></h1>
+      <p class="hero-text">ElectroReck is the student community for electrical and electronics engineering at NIT Kurukshetra: hands-on workshops, real projects, competitions, seminars and inter-college meets.</p>
       <div class="hero-btns">
-        <a href="#events" class="btn btn-primary">Explore events ↓</a>
-        <a href="#about" class="btn btn-ghost">About us →</a>
+        <a href="#workshops" class="btn btn-primary">Explore ElectroCraft</a>
+        <a href="#events" class="btn btn-ghost">All events →</a>
       </div>
-      <div class="stats">
-        <div><strong>3</strong><span>Upcoming events</span></div>
-        <div><strong>EE</strong><span>Department</span></div>
-        <div><strong>100%</strong><span>Student-run</span></div>
-      </div>
+      <div class="countdown" id="countdown" aria-live="polite"></div>
     </section>
 
-    <!-- Events -->
+    <!-- ===== Events (grid + filter) ===== -->
     <section class="section" id="events">
       <p class="eyebrow">// 01 UPCOMING EVENTS</p>
       <h2>Join the next <span class="accent">spark</span>.</h2>
 
       <div class="filters" role="group" aria-label="Filter events">
         <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="technical">Technical</button>
-        <button class="filter-btn" data-filter="cultural">Cultural</button>
-        <button class="filter-btn" data-filter="sports">Sports</button>
+        <button class="filter-btn" data-filter="workshop">Workshop</button>
+        <button class="filter-btn" data-filter="technical">Technical (Techspardha)</button>
       </div>
 
-      <div class="events-grid" id="eventsGrid">
-        <article class="card" data-category="technical">
+      <div class="events-grid">
+        <article class="card reveal" data-category="workshop">
           <div class="card-img">
-            <img src="images/event1.svg" alt="Circuit design challenge poster">
+            <img src="images/electrocraft-poster.jpeg" alt="ElectroCraft workshop">
+            <span class="badge workshop">Workshop</span>
+          </div>
+          <div class="card-body">
+            <h3>ElectroCraft</h3>
+            <p class="meta">📅 17 – 20 Oct 2026 &nbsp;·&nbsp; ⏰ 10:00 AM onwards &nbsp;·&nbsp; 📍 E101</p>
+            <p class="desc">Hands-on engineering workshop focused on innovation, creation, experimentation and collaboration.</p>
+            <button class="btn btn-primary register-btn" data-event="ElectroCraft">Register</button>
+          </div>
+        </article>
+
+        <article class="card reveal" data-category="technical">
+          <div class="card-img">
+            <img src="images/electrica.png" alt="Electrica circuit design event">
             <span class="badge technical">Technical</span>
           </div>
           <div class="card-body">
-            <h3>Circuit Design Challenge</h3>
-            <p class="meta">📅 25 Oct 2026 &nbsp;·&nbsp; ⏰ 10:00 AM</p>
-            <p class="desc">Design, simulate and build a working circuit in 3 hours.</p>
-            <button class="btn btn-primary register-btn" data-event="Circuit Design Challenge">Register</button>
+            <h3>Electrica</h3>
+            <p class="meta">🏁 Techspardha &nbsp;·&nbsp; 📅 Date to be announced</p>
+            <p class="desc">Circuit design event by ElectroReck, part of Techspardha.</p>
+            <button class="btn btn-primary register-btn" data-event="Electrica (Techspardha)">Register</button>
           </div>
         </article>
 
-        <article class="card" data-category="cultural">
+        <article class="card reveal" data-category="technical">
           <div class="card-img">
-            <img src="images/event2.svg" alt="Cultural night poster">
-            <span class="badge cultural">Cultural</span>
+            <img src="images/digispark.png" alt="Digispark circuit design event">
+            <span class="badge technical">Technical</span>
           </div>
           <div class="card-body">
-            <h3>Voltage Night</h3>
-            <p class="meta">📅 08 Nov 2026 &nbsp;·&nbsp; ⏰ 06:00 PM</p>
-            <p class="desc">Music, dance and stand-up by the students of the department.</p>
-            <button class="btn btn-primary register-btn" data-event="Voltage Night">Register</button>
-          </div>
-        </article>
-
-        <article class="card" data-category="sports">
-          <div class="card-img">
-            <img src="images/event3.svg" alt="Cricket tournament poster">
-            <span class="badge sports">Sports</span>
-          </div>
-          <div class="card-body">
-            <h3>Volt Cup Cricket</h3>
-            <p class="meta">📅 15 Nov 2026 &nbsp;·&nbsp; ⏰ 08:00 AM</p>
-            <p class="desc">Inter-year cricket tournament. Make a team of 8 and play.</p>
-            <button class="btn btn-primary register-btn" data-event="Volt Cup Cricket">Register</button>
+            <h3>Digispark</h3>
+            <p class="meta">🏁 Techspardha &nbsp;·&nbsp; 📅 Date to be announced</p>
+            <p class="desc">Circuit design event by ElectroReck, part of Techspardha.</p>
+            <button class="btn btn-primary register-btn" data-event="Digispark (Techspardha)">Register</button>
           </div>
         </article>
       </div>
-      <p class="empty" id="emptyMsg" hidden>Is category me abhi koi event nahi hai.</p>
+      <p class="empty" id="emptyMsg" hidden>No events in this category yet.</p>
     </section>
 
-    <!-- About -->
-    <section class="section about" id="about">
-      <p class="eyebrow">// 02 WHO WE ARE</p>
-      <h2>Engineering isn't just learned — it's <span class="accent">lived</span>.</h2>
-      <p>ERECK is the society of the Electrical Engineering Department. We organise workshops, competitions and cultural events so that students learn beyond the classroom.</p>
+    <!-- ===== Workshops (poster) ===== -->
+    <section class="section" id="workshops">
+      <p class="eyebrow">// 02 WORKSHOPS</p>
+      <h2>Featured: <span class="accent">ElectroCraft</span></h2>
+      <div class="feature reveal">
+        <div class="poster">
+          <!-- Poster yahan lagta hai: images/electrocraft-poster.jpeg file rakho -->
+          <img src="images/electrocraft-poster.jpeg" alt="ElectroCraft workshop poster by ElectroReck, NIT Kurukshetra" onerror="this.onerror=null;this.src='images/poster-placeholder.svg'">
+        </div>
+        <div class="feature-info">
+          <span class="badge-inline">UPCOMING WORKSHOP</span>
+          <h3>ElectroCraft</h3>
+          <p>A hands-on engineering workshop by ElectroReck focused on innovation, creation, experimentation and collaboration.</p>
+          <ul class="info-list">
+            <li>📅 <b>17 – 20 October 2026</b></li>
+            <li>⏰ 10:00 AM onwards</li>
+            <li>📍 Venue: E101</li>
+          </ul>
+          <div class="hero-btns left">
+            <button class="btn btn-primary register-btn" data-event="ElectroCraft">Register now</button>
+            <a href="#contact" class="btn btn-ghost">Ask a question</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Competitions ===== -->
+    <section class="section" id="competitions">
+      <p class="eyebrow">// 03 COMPETITIONS · TECHSPARDHA</p>
+      <h2>Circuit design at <span class="accent">Techspardha</span></h2>
+      <p class="lead">ElectroReck is bringing two circuit-design events to Techspardha, the technical fest of NIT Kurukshetra. Dates and rules will be announced soon.</p>
+      <div class="two-col">
+        <div class="panel reveal">
+          <h3>⚡ Electrica</h3>
+          <p>Circuit design competition. Rules, team size and prizes will be updated here.</p>
+          <button class="btn btn-ghost register-btn" data-event="Electrica (Techspardha)">Register for Electrica</button>
+        </div>
+        <div class="panel reveal">
+          <h3>💡 Digispark</h3>
+          <p>Circuit design competition. Rules, team size and prizes will be updated here.</p>
+          <button class="btn btn-ghost register-btn" data-event="Digispark (Techspardha)">Register for Digispark</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Meets ===== -->
+    <section class="section" id="meets">
+      <p class="eyebrow">// 04 INTER-COLLEGE MEETS</p>
+      <h2>Meet. Learn. <span class="accent">Connect.</span></h2>
+      <div class="panel reveal">
+        <h3>Coming soon</h3>
+        <p>Inter-college meet details will be published here when scheduled. Follow our Instagram and LinkedIn for updates.</p>
+      </div>
+    </section>
+
+    <!-- ===== Register ===== -->
+    <section class="section" id="register">
+      <p class="eyebrow">// 05 REGISTER</p>
+      <h2>Reserve your <span class="accent">seat</span>.</h2>
+      <div class="reg-wrap">
+        <form id="regForm" class="panel" novalidate>
+          <label for="rEvent">Event</label>
+          <select id="rEvent" name="event">
+            <option value="">Select an event</option>
+            <option>ElectroCraft</option>
+            <option>Electrica (Techspardha)</option>
+            <option>Digispark (Techspardha)</option>
+          </select>
+          <small class="error" data-err="rEvent"></small>
+
+          <div class="row">
+            <div>
+              <label for="rName">Full name</label>
+              <input id="rName" type="text" placeholder="Your name">
+              <small class="error" data-err="rName"></small>
+            </div>
+            <div>
+              <label for="rRoll">Roll number</label>
+              <input id="rRoll" type="text" placeholder="e.g. 12512345">
+              <small class="error" data-err="rRoll"></small>
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="rEmail">Email</label>
+              <input id="rEmail" type="email" placeholder="you@example.com">
+              <small class="error" data-err="rEmail"></small>
+            </div>
+            <div>
+              <label for="rPhone">Phone</label>
+              <input id="rPhone" type="tel" placeholder="10-digit mobile number">
+              <small class="error" data-err="rPhone"></small>
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="rYear">Year</label>
+              <select id="rYear">
+                <option value="">Select year</option>
+                <option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option>
+              </select>
+              <small class="error" data-err="rYear"></small>
+            </div>
+            <div>
+              <label for="rBranch">Branch</label>
+              <input id="rBranch" type="text" placeholder="e.g. Electrical Engineering">
+              <small class="error" data-err="rBranch"></small>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary full">Submit registration</button>
+        </form>
+
+        <div class="panel success" id="regSuccess" hidden>
+          <div class="tick">✓</div>
+          <h3>Registration successful!</h3>
+          <p id="regSuccessMsg"></p>
+          <button class="btn btn-ghost" id="regAgain">Register for another event</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section class="section" id="about">
+      <p class="eyebrow">// 06 ABOUT</p>
+      <h2>About <span class="accent">ElectroReck</span></h2>
+      <p class="lead">ElectroReck is the electrical and electronics engineering student community at NIT Kurukshetra. We organise technical workshops, project builds, competitions, seminars and inter-college meets: a place to learn by doing, alongside peers who love circuits, embedded systems, power and everything in between.</p>
+      <div class="pillars">
+        <div class="panel reveal"><h3>Innovate</h3><p>Think beyond limits.</p></div>
+        <div class="panel reveal"><h3>Create</h3><p>Turn concepts into reality.</p></div>
+        <div class="panel reveal"><h3>Experiment</h3><p>Learn by doing.</p></div>
+        <div class="panel reveal"><h3>Collaborate</h3><p>Build something bigger.</p></div>
+      </div>
+
+      <h3 class="sub">Frequently asked questions</h3>
+      <div class="faq">
+        <details><summary>Who can join ElectroReck?</summary><p>Any NIT Kurukshetra student with an interest in electrical and electronics engineering. Create a student account to get started.</p></details>
+        <details><summary>Do I need an account to register for events?</summary><p>No. Event registration is open without an account. A student account lets you track your registrations in one place.</p></details>
+        <details><summary>Are events free?</summary><p>Fees, if any, will be listed on each event. Many community activities are free.</p></details>
+        <details><summary>How do I stay updated?</summary><p>Follow us on Instagram (@ereck_nitkkr) and LinkedIn (erecknitkkr).</p></details>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section class="section" id="contact">
+      <p class="eyebrow">// 07 CONTACT</p>
+      <h2>Get in <span class="accent">touch</span>.</h2>
+      <div class="contact-links">
+        <a class="social" href="https://instagram.com/ereck_nitkkr" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+          Instagram · ereck_nitkkr
+        </a>
+        <a class="social" href="https://linkedin.com/company/erecknitkkr" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          LinkedIn · erecknitkkr
+        </a>
+        <a class="social" href="mailto:ereck@nitkkr.ac.in">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="m3 7 9 6 9-6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          ereck@nitkkr.ac.in
+        </a>
+      </div>
     </section>
   </main>
 
-  <footer id="contact">
-    <div>
-      <h3>ER<span class="accent">ECK</span></h3>
-      <p>Electrical Engineering Society, NIT Kurukshetra</p>
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="foot-grid">
+      <div>
+        <div class="brand"><img src="images/logo.jpg" alt="" class="brand-logo" onerror="this.onerror=null;this.src='images/logo.svg'"><span>ELECTRO<b>RECK</b></span></div>
+        <p>The electrical and electronics engineering student community at NIT Kurukshetra.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#events">Events</a><a href="#workshops">Workshops</a><a href="#competitions">Competitions</a><a href="#meets">Inter-college Meets</a>
+      </div>
+      <div>
+        <h4>Community</h4>
+        <a href="#about">About ElectroReck</a><a href="#contact">Contact</a>
+        <a href="#register">Join as a Student</a>
+        <button class="link-btn" data-open="privacyModal">Privacy Policy</button>
+        <button class="link-btn" data-open="termsModal">Terms &amp; Conditions</button>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <a href="https://instagram.com/ereck_nitkkr" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://linkedin.com/company/erecknitkkr" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:ereck@nitkkr.ac.in">Email</a>
+      </div>
     </div>
-    <p>© 2026 ERECK. All rights reserved.</p>
+    <p class="copy">© 2026 ElectroReck, NIT Kurukshetra. All rights reserved.</p>
   </footer>
 
-  <!-- Registration modal -->
-  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <!-- ===== Login modal (Student + Admin) ===== -->
+  <div class="modal" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
     <div class="modal-box">
-      <button class="close-btn" id="closeBtn" aria-label="Close">✕</button>
-      <h2 id="modalTitle">Event Registration</h2>
+      <button class="close-btn" data-close aria-label="Close">✕</button>
+      <h2 id="authTitle">Portal login</h2>
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab="student" role="tab">Student Portal</button>
+        <button class="tab" data-tab="admin" role="tab">Admin Portal</button>
+      </div>
 
-      <form id="regForm" novalidate>
-        <label for="eventName">Event</label>
-        <input type="text" id="eventName" name="event" readonly>
+      <!-- Student -->
+      <div class="tab-panel" id="tab-student">
+        <form id="studentForm" novalidate>
+          <div id="signupOnly" hidden>
+            <label for="sName">Full name</label>
+            <input id="sName" type="text" placeholder="Your name">
+          </div>
+          <label for="sEmail">Email</label>
+          <input id="sEmail" type="email" placeholder="you@example.com">
+          <label for="sPass">Password</label>
+          <input id="sPass" type="password" placeholder="Minimum 6 characters">
+          <small class="error" id="studentErr"></small>
+          <button type="submit" class="btn btn-primary full" id="studentSubmit">Login</button>
+        </form>
+        <p class="switch">
+          <span id="switchText">New here?</span>
+          <button class="link-btn" id="switchMode">Create a student account</button>
+        </p>
+      </div>
 
-        <label for="fullName">Full name</label>
-        <input type="text" id="fullName" name="name" placeholder="Your name" required>
-        <small class="error" id="nameErr"></small>
-
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com" required>
-        <small class="error" id="emailErr"></small>
-
-        <label for="phone">Phone</label>
-        <input type="tel" id="phone" name="phone" placeholder="10-digit number" required>
-        <small class="error" id="phoneErr"></small>
-
-        <label for="year">Year</label>
-        <select id="year" name="year" required>
-          <option value="">Select year</option>
-          <option>1st Year</option>
-          <option>2nd Year</option>
-          <option>3rd Year</option>
-          <option>4th Year</option>
-        </select>
-        <small class="error" id="yearErr"></small>
-
-        <button type="submit" class="btn btn-primary full">Submit registration</button>
-      </form>
-
-      <div class="success" id="success" hidden>
-        <div class="tick">✓</div>
-        <h3>Registration successful!</h3>
-        <p id="successMsg"></p>
-        <button class="btn btn-ghost" id="doneBtn">Done</button>
+      <!-- Admin -->
+      <div class="tab-panel" id="tab-admin" hidden>
+        <form id="adminForm" novalidate>
+          <label for="aId">Admin ID</label>
+          <input id="aId" type="text" autocomplete="username">
+          <label for="aPass">Password</label>
+          <input id="aPass" type="password" autocomplete="current-password">
+          <small class="error" id="adminErr"></small>
+          <button type="submit" class="btn btn-primary full">Login as Admin</button>
+        </form>
       </div>
     </div>
   </div>
 
+  <!-- ===== Dashboard modal ===== -->
+  <div class="modal" id="dashModal" role="dialog" aria-modal="true" aria-labelledby="dashTitle">
+    <div class="modal-box wide">
+      <button class="close-btn" data-close aria-label="Close">✕</button>
+      <h2 id="dashTitle">Dashboard</h2>
+      <div id="dashBody"></div>
+    </div>
+  </div>
+
+  <!-- ===== Privacy Policy ===== -->
+  <div class="modal" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+    <div class="modal-box wide doc">
+      <button class="close-btn" data-close aria-label="Close">✕</button>
+      <h2 id="privacyTitle">Privacy Policy</h2>
+      <p class="muted">Last updated: 15 October 2026</p>
+      <h4>1. Information we collect</h4>
+      <p>When you register for an event or create a student account, we collect the details you enter: name, roll number, email, phone number, year and branch.</p>
+      <h4>2. How we use it</h4>
+      <p>We use this information only to run ElectroReck events: confirming registrations, contacting participants about schedules or changes, and preparing attendance lists.</p>
+      <h4>3. Storage</h4>
+      <p>On this website, registration and account data is stored in your own browser. Passwords are not stored in plain text. If we move to an online database in future, this policy will be updated.</p>
+      <h4>4. Sharing</h4>
+      <p>We do not sell your data. Information may be shared with the ElectroReck organising team and, where required, NIT Kurukshetra authorities for event administration.</p>
+      <h4>5. Your choices</h4>
+      <p>You can ask us to correct or delete your registration details by writing to ereck@nitkkr.ac.in.</p>
+      <h4>6. Contact</h4>
+      <p>Questions about this policy: ereck@nitkkr.ac.in</p>
+    </div>
+  </div>
+
+  <!-- ===== Terms & Conditions ===== -->
+  <div class="modal" id="termsModal" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
+    <div class="modal-box wide doc">
+      <button class="close-btn" data-close aria-label="Close">✕</button>
+      <h2 id="termsTitle">Terms &amp; Conditions</h2>
+      <p class="muted">Last updated: 15 October 2026</p>
+      <h4>1. Eligibility</h4>
+      <p>Events are intended for students. Some events may be restricted to NIT Kurukshetra students or specific years; details are listed on each event.</p>
+      <h4>2. Registration</h4>
+      <p>You must provide correct information. Registration does not guarantee a seat where capacity is limited. The organisers may cancel duplicate or false registrations.</p>
+      <h4>3. Conduct</h4>
+      <p>Participants must follow lab safety rules, instructions of the organisers and institute discipline. Equipment must be handled with care.</p>
+      <h4>4. Changes</h4>
+      <p>Dates, venues and event details may change. Updates will be posted on this website and our social channels.</p>
+      <h4>5. Intellectual property</h4>
+      <p>The ElectroReck name, logo and website content belong to ElectroReck. Projects built by participants remain the property of their creators.</p>
+      <h4>6. Liability</h4>
+      <p>ElectroReck is a student community. We are not liable for loss or damage arising from participation, beyond what the law requires.</p>
+      <h4>7. Contact</h4>
+      <p>ereck@nitkkr.ac.in</p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
   <script src="script.js"></script>
 </body>
 </html>
